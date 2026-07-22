@@ -1,0 +1,38 @@
+# Ignore everything at the repository root
+/*
+
+# Keep this file
+!/.gitignore
+
+# Allow only the selected coursework folders. Parent directories must first be
+# re-included so Git can reach the nested folders.
+!/assignment1-basics/
+/assignment1-basics/*
+!/assignment1-basics/cs336_basics/
+
+!/assignment2-systems/
+/assignment2-systems/*
+!/assignment2-systems/cs336-basics/
+/assignment2-systems/cs336-basics/*
+!/assignment2-systems/cs336-basics/cs336_basics/
+!/assignment2-systems/cs336-basics/cs336_basics_staff/
+!/assignment2-systems/cs336_systems/
+
+# Ignore generated and large files inside allowed folders
+**/__pycache__/
+**/*.pyc
+**/.DS_Store
+**/.ipynb_checkpoints/
+**/.venv/
+**/.env
+**/wandb/
+**/checkpoints/
+**/save_step_*
+**/*.pt
+**/*.pth
+**/*.bin
+
+/assignment1-basics/owt_train.txt
+/assignment1-basics/owt_train.txt.gz
+/assignment1-basics/TinyStoriesV2-GPT4-train.txt
+/assignment1-basics/TinyStoriesV2-GPT4-valid.txt
