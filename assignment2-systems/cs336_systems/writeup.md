@@ -117,7 +117,5 @@ a)![1783505796128](image/writeup/1783505796128.png)
 
 ## To avoid keeping GPU compute waiting around for communication to finish, most FSDP implementations schedule the layer’s all-gather in advance of the operation, meaning the relevant weights are ready before they are needed, preventing communication from blocking computation.
 
-
-
-
-> FSDP now works: sharded weights, mixed precision, reduce-scattered gradients, replicated-gradient sync, and asynchronous gradient communication.
+> FSDP now works: sharded weights, mixed
+> precision, reduce-scattered gradients, replicated-gradient sync, and asynchronous asdfgradient communication.
