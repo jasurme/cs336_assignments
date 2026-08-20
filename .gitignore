@@ -1,26 +1,51 @@
-# Ignore everything at the repository root
-/*
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
 
-# Keep this file
-!/.gitignore
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+*venv*/
 
-# Allow only the selected coursework folders. Parent directories must first be
-# re-included so Git can reach the nested folders.
+# Python, notebook, and OS caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.DS_Store
+.vscode/
 
-# Ignore generated and large files inside allowed folders
-**/__pycache__/
-**/*.pyc
-**/.DS_Store
-**/.ipynb_checkpoints/
-**/.venv/
-**/.env
-**/wandb/
-**/checkpoints/
-**/save_step_*
-**/*.pt
-**/*.pth
-**/*.bin
+# Downloaded model/data caches and generated training output
+/hf_cache/
+wandb/
+checkpoints/
+save_step_*
 
+# Model weights, binary test snapshots, and downloaded datasets
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.npz
+*.pkl
+*.arrow
+*.parquet
+*.zip
+*.gz
+/assignment1-basics/tests/fixtures/
+/assignment1-basics/tests/_snapshots/
+/assignment2-systems/tests/fixtures/
+/assignment2-systems/tmp/
+/tokenization/encoder.json
+/tokenization/vocab.bpe
+/uztoken/*.txt
+
+# Large local training corpora (download these separately)
 /assignment1-basics/owt_train.txt
 /assignment1-basics/owt_train.txt.gz
 /assignment1-basics/TinyStoriesV2-GPT4-train.txt
