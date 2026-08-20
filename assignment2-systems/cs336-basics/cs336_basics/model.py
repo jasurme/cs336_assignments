@@ -11,12 +11,12 @@ class Linear(torch.nn.Module):
         self.device=device
         self.dtype=dtype
         self.std= math.sqrt(2 / (self.in_features + self.out_features))
-        self.W = torch.nn.Parameter(torch.empty(self.out_features, self.in_features))
-        torch.nn.init.trunc_normal_(self.W, std=self.std, a=-3* self.std, b = 3* self.std)
+        self.weight = torch.nn.Parameter(torch.empty(self.out_features, self.in_features))
+        torch.nn.init.trunc_normal_(self.weight, std=self.std, a=-3* self.std, b = 3* self.std)
 
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        y = einops.einsum(self.W, x, "out in, ... in -> ... out")
+        y = einops.einsum(self.weight, x, "out in, ... in -> ... out")
         return y
 
 
@@ -27,12 +27,12 @@ class Embedding(torch.nn.Module):
         self.embedding_dim = embedding_dim
         self.device=device
         self.dtype=dtype
-        self.embedding_matrix = torch.nn.Parameter(torch.empty(self.num_embeddings, self.embedding_dim))
-        torch.nn.init.trunc_normal_(self.embedding_matrix, std=1, a=-3, b=3)
+        self.weight = torch.nn.Parameter(torch.empty(self.num_embeddings, self.embedding_dim))
+        torch.nn.init.trunc_normal_(self.weight, std=1, a=-3, b=3)
 
     def forward(self, token_ids: torch.Tensor) -> torch.Tensor:
         token_ids = token_ids.to(torch.int64)
-        return self.embedding_matrix[token_ids]
+        return self.weight[token_ids]
 
 
 

@@ -160,7 +160,7 @@ def matmul(x, y):
   matmul_kernel[grid](
       x,y,z,
       M, K, N,
-      x.stride(0), x.stride(1),
+      x.stride(0), x.stride(1
       y.stride(0), y.stride(1),
       z.stride(0), z.stride(1)
   )

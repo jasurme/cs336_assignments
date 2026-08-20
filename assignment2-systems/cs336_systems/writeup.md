@@ -100,9 +100,24 @@ for seqlength = 8192: total is 4.3GB
 
 so it is O(N^2), quadratic change
 
-
 ## Problem (torch_compile): Torch Compile (2 points)
 
 a)![1783505796128](image/writeup/1783505796128.png)
 
-b)
+# Problem (distributed_communication_single_node): Distributed Communication (Single Node) (5 points)
+
+| process/size | 1MiB       | 10MiB      | 100MiB     | 1GiB      |
+| ------------ | ---------- | ---------- | ---------- | --------- |
+| 2            | 0.00079858 | 0.00503601 | 0.05643806 |           |
+| 4            | 0.002321   | 0.01878695 | 0.19383256 |           |
+| 6            | 0.0046473  | 0.0370027  | 0.3659236  | 6.1956408 |
+|              |            |            |            |           |
+
+# overlapping computation of the backward pass with communication of gradients
+
+## To avoid keeping GPU compute waiting around for communication to finish, most FSDP implementations schedule the layer’s all-gather in advance of the operation, meaning the relevant weights are ready before they are needed, preventing communication from blocking computation.
+
+
+
+
+> FSDP now works: sharded weights, mixed precision, reduce-scattered gradients, replicated-gradient sync, and asynchronous gradient communication.
